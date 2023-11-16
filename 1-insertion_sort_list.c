@@ -26,9 +26,8 @@ void insertion_sort_list(listint_t **list)
 		{
 			swap_nodes(list, temp, current);
 			temp = current->prev;
-
+			print_list(*list);
 		}
-		print_list(*list);
 		current = current->next;
 	}
 }
