@@ -65,18 +65,25 @@ void lomuto_sort(int *array, size_t size, int start, int end)
 
 int lomuto_partition(int *array, size_t size, int start, int end)
 {
-	int pivot = array[end], p_index = start, i;
+	int pivot = array[end], p_index, i;
 
-	for (i = start; i <= end - 1; i++)
+	for (p_index = i = start; i < end; i++)
 	{
 		if (array[i] < pivot)
 		{
-            swap(array, i,  p_index++);
-            /*print_array(array, size);*/
+            if (p_index < i)
+            {
+                swap(array, i, p_index);
+                print_array(array, size);
+            }
+            p_index++;
 		}
 	}
-	swap(array, p_index, end);
-    print_array(array, size);
+    if (array[p_index] > pivot)
+    {
+        swap(array, p_index, end);
+        print_array(array, size);
+    }
 
 	return (p_index);
 }
