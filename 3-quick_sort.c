@@ -71,19 +71,19 @@ int lomuto_partition(int *array, size_t size, int start, int end)
 	{
 		if (array[i] < pivot)
 		{
-            if (p_index < i)
-            {
-                swap(array, i, p_index);
-                print_array(array, size);
-            }
-            p_index++;
+			if (p_index < i)
+			{
+				swap(array, i, p_index);
+				print_array(array, size);
+			}
+		p_index++;
 		}
 	}
-    if (array[p_index] > pivot)
-    {
-        swap(array, p_index, end);
-        print_array(array, size);
-    }
+	if (array[p_index] > pivot)
+	{
+		swap(array, p_index, end);
+		print_array(array, size);
+	}
 
 	return (p_index);
 }
