@@ -1,56 +1,57 @@
 #include "sort.h"
 
 /**
- * swap - Swap two integers in an array.
- * @array: contains a list of integers
- * @index_a: The first integer to swap.
- * @index_b: The second integer to swap.
- */
+* swap - Swap two integers in an array.
+* @array: contains a list of integers
+* @index_a: The first integer to swap.
+* @index_b: The second integer to swap.
+*/
 
 void swap(int *array, int index_a, int index_b)
 {
-	int temp;
+int temp;
 
-	temp = array[index_a];
-	array[index_a] = array[index_b];
-	array[index_b] = temp;
+temp = array[index_a];
+array[index_a] = array[index_b];
+array[index_b] = temp;
 }
 
 /**
- * hoare_partition - Order a subset of an array of integers
- *                   according to the hoare partition scheme.
- * @array: The array of integers.
- * @size: The size of the array.
- * @low: The starting index of the subset to sort.
- * @high: The ending index of the subset to sort.
- *
- * Return: Pivot position.
- *
- * Description: Uses the last element of the partition as the pivot.
- * Prints the array after each swap of two elements.
- */
+* hoare_partition - Order a subset of an array of integers
+*                   according to the hoare partition scheme.
+* @array: The array of integers.
+* @size: The size of the array.
+* @low: The starting index of the subset to sort.
+* @high: The ending index of the subset to sort.
+*
+* Return: Pivot position.
+*
+* Description: Uses the last element of the partition as the pivot.
+* Prints the array after each swap of two elements.
+*/
 int hoare_partition(int *array, size_t size, int low, int high)
 {
-	int pivot, i, j;
+int pivot, i, j;
 
-	pivot = array[high];
+pivot = array[high];
 
-    for (i = low - 1, j = high + 1; i < j; )
-    {
-		do {
-			i++;
-		} while (array[i] < pivot);
-		do {
-		    j--;
-		} while (array[j] > pivot);
+for (i = low - 1, j = high + 1; i < j; )
+{
+	do {
+		i++;
+	} while (array[i] < pivot);
 
-		if (i < j)
-        {
-            swap(array, i, j);
-            print_array(array, size);
-        }
+	do {
+		j--;
+	} while (array[j] > pivot);
+
+	if (i < j)
+	{
+		swap(array, i, j);
+		print_array(array, size);
+		}
 	}
-    return (i);
+	return (i);
 }
 
 /**
@@ -70,7 +71,7 @@ void hoare_sort(int *array, size_t size, int low, int high)
 	{
 		p_index = hoare_partition(array, size, low, high);
 		hoare_sort(array, size, low, p_index - 1);
-		hoare_sort(array, size, p_index , high);
+		hoare_sort(array, size, p_index, high);
 	}
 }
 
@@ -87,5 +88,5 @@ void quick_sort_hoare(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-    hoare_sort(array, size, 0, size - 1);
+	hoare_sort(array, size, 0, size - 1);
 }
