@@ -32,7 +32,12 @@ void swap(int *array, int index_a, int index_b);
 void lomuto_sort(int *array, size_t size, int start, int end);
 int lomuto_partition(int *array, size_t size, int start, int end);
 void shell_sort(int *array, size_t size);
-
 void swap_nodes(listint_t **list, listint_t *node1, listint_t *node2);
+int find_max(int *array, int size);
+void counting_sort(int *array, size_t size);
+void radix_sort(int *array, size_t size);
+void hoare_sort(int *array, size_t size, int low, int high);
+int hoare_partition(int *array, size_t size, int low, int high);
+void quick_sort_hoare(int *array, size_t size);
 
 #endif
