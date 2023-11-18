@@ -50,7 +50,7 @@ void counting_sort(int *array, size_t size)
 		return;
 	}
 	/*Initialize all elements with zero*/
-	for (i = 0; i < (k + 1); i++)
+	for (i = 0; i < k; i++)
 		count[i] = 0;
 
 	/*Get the count of times that integers appear in array*/
@@ -64,7 +64,7 @@ void counting_sort(int *array, size_t size)
 	for (i = size - 1; i <= size; i--)
 		output_array[--count[array[i]]] = array[i];
 
-	print_array(count, (k + 1));
+	print_array(count, k);
 
 	/*Copy sorted list from Output array to initial array*/
 
