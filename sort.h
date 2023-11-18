@@ -43,6 +43,7 @@ void radix_sort(int *array, size_t size);
 void hoare_sort(int *array, size_t size, int low, int high);
 int hoare_partition(int *array, size_t size, int low, int high);
 void quick_sort_hoare(int *array, size_t size);
-
+void heapify(int *array, size_t size, size_t root, size_t start_pt);
+void heap_sort(int *array, size_t size);
 
 #endif
