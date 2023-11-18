@@ -18,12 +18,14 @@ void swap(int *array, int index_a, int index_b)
 
 
 /**
+  *heapify - builds a heap from an array
   *
+  *@array: list of integers
+  *@size: size of the array
+  *@r_size: size of the heap
+  *@start_pt: starting point of where heap is built from
   *
-  *
-  *
-  *
-  *
+  *Return: nothing
   */
 
 void heapify(int *array, size_t size, size_t r_size, size_t start_pt)
@@ -46,11 +48,12 @@ void heapify(int *array, size_t size, size_t r_size, size_t start_pt)
 
 }
 /**
+  *heap_sort: sorting an array using the heap sort algorithm
   *
+  *@array: list of integers to be sorted
+  *@size:size of the array
   *
-  *
-  *
-  *
+  *Return: nothing
   */
 
 void heap_sort(int *array, size_t size)
@@ -65,7 +68,7 @@ void heap_sort(int *array, size_t size)
         heapify(array, size, size, i);
 
     /*This next loop recursively sorts the array by deleting the root nodes*/
-    for (i = size - 1; i >= 0; i--)
+    for (i = size - 1; i > 0; i--)
     {
         swap(array, 0, i);
         print_array(array, size);
