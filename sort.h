@@ -4,7 +4,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
+#include <stddef.h>
+#include <stdint.h>
 
 /**
  * struct listint_s - Doubly linked list node
@@ -47,4 +48,7 @@ void heapify(int *array, size_t size, size_t root, size_t start_pt);
 void heap_sort(int *array, size_t size);
 
 void merge(int* array, int* temp, size_t left_start, size_t left_end, size_t right_start, size_t right_end);
+void bitonic_merge(int *array, size_t size, size_t start, size_t seq, char flow);
+void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow);
+void bitonic_sort(int *array, size_t size);
 #endif
