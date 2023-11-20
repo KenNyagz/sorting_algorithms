@@ -58,13 +58,13 @@ void counting_sort(int *array, size_t size)
 		count[array[i]]++;
 
 	/*Perform a cumulative addition on the integers from left to right*/
-	for (i = 1; i <= k; i++)
+	for (i = 0; i < k + 1; i++)
 		count[i] = count[i] + count[i - 1];
+	print_array(count, k + 1);
+
 	/*Build Output array*/
 	for (i = size - 1; i != SIZE_MAX; i--)
 		output_array[--count[array[i]]] = array[i];
-
-	print_array(count, k + 1);
 
 	/*Copy sorted list from Output array to initial array*/
 
