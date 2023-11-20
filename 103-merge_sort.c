@@ -3,39 +3,56 @@
 /**
 *merge - joins two arrays
 *@array: array to be sorted
-*@temp: temporary mini array sliced from prior array
-*@left_start: start of first slice/half array
-*@left_end: end of first half of original array
-*@right_start: first of second half of half array
-*@right_end: end of second half array
+*@left: start array(and subsequent sb arrays)
+*@mid: midpoint of array(and subsequent sub arrays)
+*@right: end of  array(and subsequent sub arrays)
 *Return: void
 */
 
-void merge(int *array, int *temp, size_t left_start, size_t left_end,
-	 size_t right_start, size_t right_end)
+void merge(int *array, size_t left, size_t mid, size_t right)
 {
-	size_t i = 0, j = 0, k = 0, p = 0;
+	size_t i = 0, j = 0, k = 0; 
+	size_t n1 = mid - left + 1, n2 = right - mid;
+	int *leftArray , *rightArray;
 
-	i = left_start;
-	j = right_start;
-	k = left_start;
+	leftArray = malloc(sizeof(int) * n1);
+	rightArray = malloc(sizeof(int) * n2);
 
-	while (i <= left_end && j <= right_end)
+	for (i = 0; i < n1; i++)
+		leftArray[i] = array[left + i];
+	for (j = 0; j < n2; j++)
+		rightArray[j] = array[mid + 1 + j];
+
+	i = 0;
+	j = 0;
+	k = left;
+
+	while (i < n1 && j < n2)
 	{
-		if (array[i] <= array[j])
-			temp[k++] = array[i++];
+		if (leftArray[i] <= rightArray[j])
+		{
+			array[k] = leftArray[i];
+			i++;
+		}
 		else
-			temp[k++] = array[j++];
+		{
+			array[k] = rightArray[j];
+			j++;
+		}
+		k++;
 	}
-	while (i <= left_end)
-		temp[k++] = array[i++];
-
-	while (j <= right_end)
-		temp[k++] = array[j++];
-
-	for (p = left_start; p <= right_end; p++)
+	while (i < n1)
 	{
-		array[p] = temp[p];
+		array[k] = leftArray[i];
+		i++;
+		k++;
+	}
+
+	while (j < n2)
+	{
+		array[k] = rightArray[j];
+		j++;
+		k++;
 	}
 }
 
@@ -49,18 +66,17 @@ void merge(int *array, int *temp, size_t left_start, size_t left_end,
 *Return: Nothing
 */
 
-void merge_sort_helper(int *array, int *temp, size_t start, size_t end)
+void merge_sort_helper(int *array, size_t left, size_t right)
 {
-	size_t mid = 0, i = 0;
+	size_t mid = 0;
 
-	if (start >= end)
-		return;
+	if (left < right)
+	{
+		mid = left + (right - left) / 2;
 
-	mid = start + (end - start) / 2;
-
-	merge_sort_helper(array, temp, start, mid);
-	merge_sort_helper(array, temp, mid + 1, end);
-
+		merge_sort_helper(array, left, mid);
+		merge_sort_helper(array, mid + 1, right);
+/*
 	printf("Merging...\n");
 	printf("[Left]: ");
 	for (i = start; i <= mid; i++)
@@ -71,13 +87,14 @@ void merge_sort_helper(int *array, int *temp, size_t start, size_t end)
 	for (i = mid + 1; i <= end; i++)
 		printf("%d ", array[i]);
 	printf("\n");
+*/
+	merge(array, left, mid, right);
 
-	merge(array, temp, start, mid, mid + 1, end);
-
-	printf("[Done]: ");
+/*	printf("[Done]: ");
 	for (i  = start; i <= end; i++)
 		printf("%d ", array[i]);
-	printf("\n");
+	printf("\n");*/
+	}
 }
 
 /**
@@ -98,6 +115,6 @@ void merge_sort(int *array, size_t size)
 	if (temp == NULL)
 		return;
 
-	merge_sort_helper(array, temp, 0, size - 1);
+	merge_sort_helper(array, 0, size - 1);
 	free(temp);
 }
