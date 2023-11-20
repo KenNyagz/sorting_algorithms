@@ -34,7 +34,7 @@ int lomuto_partition(int *array, size_t size, int start, int end);
 void shell_sort(int *array, size_t size);
 void merge_sort(int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
-
+void merge_sort_helper(int *array, int *temp, size_t start, size_t end);
 void swap_nodes(listint_t **list, listint_t *node1, listint_t *node2);
 
 int find_max(int *array, int size);
@@ -46,4 +46,5 @@ void quick_sort_hoare(int *array, size_t size);
 void heapify(int *array, size_t size, size_t root, size_t start_pt);
 void heap_sort(int *array, size_t size);
 
+void merge(int* array, int* temp, size_t left_start, size_t left_end, size_t right_start, size_t right_end);
 #endif
