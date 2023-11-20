@@ -35,7 +35,7 @@ int lomuto_partition(int *array, size_t size, int start, int end);
 void shell_sort(int *array, size_t size);
 void merge_sort(int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
-void merge_sort_helper(int *array, size_t left, size_t right);
+void merge_sort_helper(int *array, size_t size);
 void swap_nodes(listint_t **list, listint_t *node1, listint_t *node2);
 
 int find_max(int *array, int size);
@@ -47,7 +47,7 @@ void quick_sort_hoare(int *array, size_t size);
 void heapify(int *array, size_t size, size_t root, size_t start_pt);
 void heap_sort(int *array, size_t size);
 
-void merge(int* array, size_t left, size_t mid, size_t right);
+void merge(int *array, size_t left_size, size_t right_size);
 void bitonic_merge(int *array, size_t size, size_t start, size_t seq, char flow);
 void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow);
 void bitonic_sort(int *array, size_t size);
