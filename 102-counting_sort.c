@@ -61,10 +61,10 @@ void counting_sort(int *array, size_t size)
 	for (i = 1; i <= k; i++)
 		count[i] = count[i] + count[i - 1];
 	/*Build Output array*/
-	for (i = size - 1; i > 0; i--)
+	for (i = size - 1; i != SIZE_MAX; i--)
 		output_array[--count[array[i]]] = array[i];
 
-	print_array(count, k);
+	print_array(count, k + 1);
 
 	/*Copy sorted list from Output array to initial array*/
 
