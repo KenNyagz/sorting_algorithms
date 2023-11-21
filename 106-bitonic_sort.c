@@ -120,7 +120,7 @@ void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow)
 void bitonic_sort(int *array, size_t size)
 {
 	/*checks valid input conditions*/
-	if (array == NULL || size < 2)
+	if (array == NULL || size < 2 || (size % 2) != 0)
 		return;
 	bitonic_seq(array, size, 0, size, 'A');
 }
