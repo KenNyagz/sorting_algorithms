@@ -6,7 +6,9 @@
 #include <string.h>
 
 /**
-  *enum kind_e - kind of card
+  *enum kind_e - kind of card, the enum assigns int values to
+  *its enumerators by default from 0 if explicit values aint
+  *defined
   *
   *@SPADE: 1st kind
   *@HEART: 2nd kind
