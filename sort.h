@@ -48,7 +48,7 @@ void heapify(int *array, size_t size, size_t root, size_t start_pt);
 void heap_sort(int *array, size_t size);
 
 void merge(int *array, size_t left_size, size_t right_size);
-void bitonic_merge(int *array, size_t size, size_t start, size_t seq, char flow);
+void bitonicmerge(int *array, size_t size, size_t start, size_t seq, char dir);
 void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow);
 void bitonic_sort(int *array, size_t size);
 #endif

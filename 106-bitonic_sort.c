@@ -26,12 +26,12 @@ void swap(int *array, int index_a, int index_b)
   *@size: Size of the array
   *@start: Index where bitonic sequence merge will start from
   *@seq: size of sequence to be merged
-  *@flow: The direction of the sequence (Ascending or descending) aka sorting
+  *@dir: The direction of the sequence (Ascending or descending) aka sorting
   *direction
   *
   */
 
-void bitonicmerge(int *array, size_t size, size_t start, size_t seq, char flow)
+void bitonicmerge(int *array, size_t size, size_t start, size_t seq, char dir)
 {
 	size_t half = seq / 2, i;
 
@@ -46,16 +46,16 @@ void bitonicmerge(int *array, size_t size, size_t start, size_t seq, char flow)
 			 *corresponding element in the 2nd half, based on sorting flow/
 			 *direction
 			 */
-			if ((flow == 'A' && array[i] > array[i + half]) ||
-				(flow == 'D' && array[i] < array[i + half]))
+			if ((dir == 'A' && array[i] > array[i + half]) ||
+				(dir == 'D' && array[i] < array[i + half]))
 			{
 				swap(array, i, i + half);
 			}
 		}
 
 		/*recursively calls itself on the two halves of the sequence*/
-		bitonicmerge(array, size, start, half, flow);
-		bitonicmerge(array, size, start + half, half, flow);
+		bitonicmerge(array, size, start, half, dir);
+		bitonicmerge(array, size, start + half, half, dir);
 	}
 }
 
