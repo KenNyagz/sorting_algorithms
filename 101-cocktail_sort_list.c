@@ -27,7 +27,7 @@ void cocktail_sort_list(listint_t **list)
 				swp_flag = 1;
 				print_list(*list);
 			}
-			else
+
 				current = current->next;
 		}
 		if (!swp_flag)
@@ -42,7 +42,7 @@ void cocktail_sort_list(listint_t **list)
 				swp_flag = 1;
 				print_list(*list);
 			}
-			else
+
 				current = current->prev;
 		}
 		start = current->next;
